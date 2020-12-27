@@ -1,20 +1,14 @@
-// A complete working C++ program to 
-// demonstrate deletion in singly 
-// linked list with class 
-#include <bits/stdc++.h> 
+
+#include <iostream> 
 using namespace std; 
 
-// A linked list node 
 class Node{ 
 public: 
 	int data; 
 	Node* next; 
 }; 
 
-// Given a reference (pointer to pointer) 
-// to the head of a list and an int, 
-// inserts a new node on the front of the 
-// list. 
+ 
 void push(Node** head_ref, int new_data) 
 { 
 	Node* new_node = new Node(); 
@@ -23,9 +17,7 @@ void push(Node** head_ref, int new_data)
 	(*head_ref) = new_node; 
 } 
 
-// Given a reference (pointer to pointer) 
-// to the head of a list and a key, deletes 
-// the first occurrence of key in linked list 
+
 void deleteNode(Node** head_ref, int key) 
 { 
 	
@@ -33,18 +25,15 @@ void deleteNode(Node** head_ref, int key)
 	Node* temp = *head_ref; 
 	Node* prev = NULL; 
 	
-	// If head node itself holds 
-	// the key to be deleted 
 	if (temp != NULL && temp->data == key) 
-	{ 
-		*head_ref = temp->next; // Changed head 
-		delete temp;		 // free old head 
-		return; 
-	} 
+    { 
+        *head_ref = temp->next; // Changed head 
+        delete temp;            // free old head 
+        return; 
+    } 
+	
 
-	// Else Search for the key to be deleted, 
-	// keep track of the previous node as we 
-	// need to change 'prev->next' */ 
+	
 	while (temp != NULL && temp->data != key) 
 	{ 
 		prev = temp; 
@@ -55,21 +44,19 @@ void deleteNode(Node** head_ref, int key)
 	if (temp == NULL) 
 		return; 
 
-	// Unlink the node from linked list 
+	// // Unlink the node from linked list 
 	prev->next = temp->next; 
 
-	// Free memory 
+	// // Free memory 
 	delete temp; 
 } 
 
-// This function prints contents of 
-// linked list starting from the 
-// given node 
+
 void printList(Node* node) 
 { 
 	while (node != NULL) 
 	{ 
-		cout << node->data << " "; 
+		cout << node->data <<endl; 
 		node = node->next; 
 	} 
 } 
