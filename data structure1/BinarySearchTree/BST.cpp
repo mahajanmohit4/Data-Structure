@@ -66,6 +66,27 @@ void PostOrder(Node *root)
     PostOrder(root->right);
     cout<< root->data <<endl;
 }
+
+void FindEle(Node *root, int val){
+	int depth=-1;
+	Node *temp;
+	temp=root;
+	while(temp!=NULL){
+		depth++;
+		if(temp->data==val){
+			cout<<"Element found at depth : "<< depth<<endl;
+			return;
+		}
+		else if(temp->data<val){
+			temp=temp->right;
+		}
+		else
+			temp=temp->left;
+	}
+	
+	cout<<"Element is not Present in Tree...";
+}
+
 int main()
 {
     Node *root = new Node(100);
@@ -83,6 +104,8 @@ int main()
     cout<<"PostOrder : "<<endl;
     PostOrder(root);
 
+    cout<<"Find depth : "<<endl;
+    FindEle(root, 100);
     return 0;
 }
 
