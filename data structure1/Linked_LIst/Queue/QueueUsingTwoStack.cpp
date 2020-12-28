@@ -5,6 +5,8 @@ int arr1[size];
 int arr2[size];
 static int top1 = -1;
 static int top2 = -1;
+
+
 bool isEmpty1()
 {    
     return (top1 < 0 );

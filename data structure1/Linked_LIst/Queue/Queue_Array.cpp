@@ -45,28 +45,13 @@ int main()
     EnQueue(22);
     EnQueue(33);
     EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
-    EnQueue(44);
+   
 
     show();
     cout<<"=================="<<endl;
     DeQueue();
     DeQueue();
-     DeQueue();
-      DeQueue();
-       DeQueue();
-        DeQueue();
-         DeQueue();
-          DeQueue();
-           DeQueue();
-            DeQueue();
-             DeQueue();
+   
 
     cout<<"=================="<<endl;
     show();

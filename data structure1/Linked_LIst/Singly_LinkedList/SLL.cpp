@@ -1,23 +1,27 @@
 #include<iostream>
 using namespace std;
 
-class Node{
-    public :
+class Node
+{
+    public:
     int data;
-    Node *next;
+    Node* next;
 
 };
 
-void asd(Node* n)
-{
-    
-    while(n != NULL)
-    {
-        cout<<n->data<<endl;
-        n = n->next;
-    }
+void push(Node** headRef , int newData)
+{    
+    Node* newNode = new Node();
+
+    newNode->data = newData;
+
+    newNode->next = (*headRef);
+
+    (*headRef) = newNode;
 }
-void printList(Node* n){
+
+void printList(Node* n)
+{
     while (n != NULL)
     {
         cout<<n->data<<endl;
@@ -26,29 +30,79 @@ void printList(Node* n){
     
 }
 
-int main()
+void deleteNode(Node** head_ref, int key) 
+{	
+	Node* temp = *head_ref; 
+	Node* prev = NULL; 
+	
+	if (temp != NULL && temp->data == key) 
+    { 
+        *head_ref = temp->next;  
+        delete temp;            
+        return; 
+    } 
+	
+	while (temp != NULL && temp->data != key) 
+	{ 
+		prev = temp; 
+		temp = temp->next; 
+	} 
+	
+	if (temp == NULL) 
+		return; 
+	
+	prev->next = temp->next; 	
+	delete temp; 
+} 
+
+void findSecondHighest(Node *head)
 {
+    cout << "Enterd in function" << endl;
+    int First, Second = 0;
 
-    Node *head = NULL;
-    Node *second =NULL;
-    Node *third = NULL;
-    Node *forth = new Node();
+    Node *temp;
+    temp = head;
+    First = temp->data;
 
-    head = new Node();
-    second = new Node();
-    third = new Node();
+    while (temp != NULL)
+    {       
+        if (temp->data > First)
+        {
+            Second = First;
+            First = temp->data;
+        }
+        else if (Second < temp->data && temp->data < First)
+        {
+            Second = temp->data;
+        }
+        temp = temp->next;
+    }
 
-    head->data = 11;
-    head->next = second;
+    cout << "first Highest :- " << First << endl;
+    cout << "Second Highest :- " << Second << endl;
+}
 
-    second->data = 22;
-    second->next = third;
+int main()
+{   	
+	Node* head = NULL; 
 
-    third->data = 33;
-    third->next = NULL;
+	
+	push(&head, 7); 
+	push(&head, 1); 
+	push(&head, 3); 
+	push(&head, 2); 
 
-    printList(head);
-    cout<<"Hello world";
+	puts("Created Linked List: "); 
+	printList(head); 
+
+	deleteNode(&head, 1); 
+
+	cout<<"======================"<<endl;	
+	printList(head); 
+
+    findSecondHighest(head);
+
+
 
     return 0;
 }

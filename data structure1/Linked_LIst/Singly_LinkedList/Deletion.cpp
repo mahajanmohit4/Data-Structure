@@ -19,35 +19,27 @@ void push(Node** head_ref, int new_data)
 
 
 void deleteNode(Node** head_ref, int key) 
-{ 
-	
-	// Store head node 
+{	
 	Node* temp = *head_ref; 
 	Node* prev = NULL; 
 	
 	if (temp != NULL && temp->data == key) 
     { 
-        *head_ref = temp->next; // Changed head 
-        delete temp;            // free old head 
+        *head_ref = temp->next;  
+        delete temp;            
         return; 
     } 
-	
-
 	
 	while (temp != NULL && temp->data != key) 
 	{ 
 		prev = temp; 
 		temp = temp->next; 
 	} 
-
-	// If key was not present in linked list 
+	
 	if (temp == NULL) 
 		return; 
-
-	// // Unlink the node from linked list 
-	prev->next = temp->next; 
-
-	// // Free memory 
+	
+	prev->next = temp->next; 	
 	delete temp; 
 } 
 
@@ -85,4 +77,4 @@ int main()
 	return 0; 
 } 
 
-// This code is contributed by ac121102
+
